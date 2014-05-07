@@ -1,0 +1,37 @@
+{
+  "name": "beat-laboratory",
+  "version": "0.0.1",
+  "homepage": "https://github.com/leesus/leesus.github.io/beat-laboratory",
+  "authors": [
+    "leesus <lee@lee-ellam.com>"
+  ],
+  "description": "HTML5 WebAudio Beat Maker",
+  "main": "dist/beat-laboratory.js",
+  "dependencies": {
+    "requirejs": "*",
+    "underscore": "*",
+    "jquery": "*",
+    "knockout": "*",
+    "modernizr": "*",
+    "baseviewmodel": "~0.2.1"
+  },
+  "keywords": [
+    "html5",
+    "webaudio",
+    "drum",
+    "machine",
+    "beat",
+    "maker",
+    "midi",
+    "sequencer"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

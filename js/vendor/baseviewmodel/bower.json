@@ -1,0 +1,40 @@
+{
+  "name": "BaseViewModel",
+  "version": "0.2.1",
+  "homepage": "https://github.com/leesus/BaseViewModel",
+  "authors": [
+    "leesus <lee@lee-ellam.com>"
+  ],
+  "description": "Backbone like model extension for knockout viewmodels, including automatic observable and computed function creation for model properties.",
+  "main": "baseviewmodel.js",
+  "dependencies": {
+    "underscore": "~1.5.2",
+    "knockout": "~3.0.0"
+  },
+  "devDependencies": {
+    "mocha": "latest",
+    "should": "latest",
+    "requirejs": "latest"
+  },
+  "keywords": [
+    "knockout.js",
+    "baseviewmodel",
+    "inheritance",
+    "backbone"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "docs",
+    "lib",
+    "node_modules",
+    "src",
+    "test",
+    "**/.*",
+    ".bowerrc",
+    ".gitattributes",
+    ".gitignore",
+    ".npmignore",
+    "Gruntfile.js",
+    "package.json"
+  ]
+}
