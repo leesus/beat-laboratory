@@ -26,20 +26,20 @@
           <dl class="track">
             <dt class="controls">
               <div class="instrument" data-bind="text: instrument"></div>
-              <!--<div class="volume"><label>Volume</label><input type="range" step="0.1" min="0" max="1" value="0.5" data-bind="value: volume"></div>
+              <div class="volume"><label>Volume</label><input type="range" step="0.01" min="0" max="1" value="0.5" data-bind="event: { mousedown: setVolume, mouseup: setVolume }"></div>
               <div class="mute"><label>Mute</label><input type="checkbox" data-bind="checked: mute"></div>
-              <div class="solo"><label>Solo</label><input type="checkbox" data-bind="checked: solo"></div>-->
+              <div class="solo"><label>Solo</label><input type="checkbox" data-bind="checked: solo"></div>
             </dt>
             <dd class="steps">
-              <ul data-bind="foreach: ko.utils.range(1, $root.totalSteps)">
+              <ul data-bind="foreach: ko.utils.range(0, $root.totalSteps() - 1)">
                 <li>
-                  <button data-bind="text: $data,
+                  <button data-bind="text: $data + 1,
                                     click: function() {
                                       $root.toggleSample($parent, [$data]);
                                     },
                                     css: { 
-                                      active: $root.steps()[$data - 1].indexOf($parent) > - 1,
-                                      current: $data === $root.currentStep() && $root.playing()
+                                      active: $root.isActiveStep($data, $parent),
+                                      current: $root.isCurrentStep($data)
                                     }"></button>
                 </li>
               </ul>
@@ -48,7 +48,10 @@
         </div>
         <div id="steps" class="clearfix">
           <ul data-bind="foreach: steps">
-            <li class="step" data-bind="text: $index() + 1, css: { active: $index() + 1 === $root.currentStep() }"></li>
+            <li class="step" data-bind="text: $index() + 1,
+                                        css: {
+                                          current: $root.isCurrentStep($index)
+                                        }"></li>
           </ul>
         </div>
         <div id="control-panel" class="clearfix">
@@ -63,12 +66,12 @@
           </div>
           <div class="volume">
             <label>Volume</label>
-            <input type="range" step="0.1" min="0" max="1" data-bind="value: volume">
+            <input type="range" step="0.01" min="0" max="1" data-bind="event: { mousedown: setVolume, mouseup: setVolume }">
           </div>
-          <div class="balance">
+          <!-- <div class="balance">
             <label>Balance</label>
             <input type="range" step="0.1" min="0" max="1" data-bind="value: balance">
-          </div>
+          </div> -->
           <div class="bpm">
             <label for="bpm">BPM</label>
             <input type="number" step="1" min="60" max="300" id="bpm" data-bind="value: bpm">

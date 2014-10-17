@@ -42,4 +42,8 @@ http.createServer(function(request, response) {
       response.end();
     });
   });
-}).listen(port);
+}).listen(port, function() {
+  console.log('=============================');
+  console.log('Server listening on port ' + port);
+  console.log('=============================');
+});

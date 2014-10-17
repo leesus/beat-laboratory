@@ -1,8 +1,7 @@
-define(['baseviewmodel', 'webaudio/context', 'webaudio/bufferloader'], function(BaseViewModel, context, BufferLoader){
+define(['baseviewmodel', 'webaudio/context', 'webaudio/bufferloader', 'viewmodels/mixer'], function(BaseViewModel, context, BufferLoader, mixer){
 
   var TrackViewModel = BaseViewModel.extend({
     defaults: {
-      volume: 0.5,
       mute: false,
       solo: false
     }
@@ -13,12 +12,17 @@ define(['baseviewmodel', 'webaudio/context', 'webaudio/bufferloader'], function(
       if (typeof this.url !== 'function' || this.url() === '') {
         return;
       }
-      
+
+      this.nodes = {};
+
       var url = [],
           loadSound = function onload(buffers){
             this.audio = context.createBufferSource();
             this._buffer = buffers[0];
             this.audio.buffer = buffers[0];
+            // Setup defaults and subscribables for nodes
+            this.createNodes();
+            this.setValues();
           };
 
       url.push(this.url());
@@ -29,6 +33,22 @@ define(['baseviewmodel', 'webaudio/context', 'webaudio/bufferloader'], function(
     reloadAudio: function(buffer){
       this.audio = context.createBufferSource();
       this.audio.buffer = buffer || this._buffer;
+
+      this.audio.connect(this.nodes.volume);
+    },
+    createNodes: function() {
+      this.nodes.volume = context.createGain();
+
+      this.nodes.volume.connect(mixer.nodes.volume);
+    },
+
+    setValues: function() {
+      this.setVolume(0.5);
+    },
+    setVolume: function(volume, evt) {
+      this.nodes.volume.gain.value = !evt ? volume : evt.target.value;
+      console.log(this.instrument() + ' volume', this.nodes.volume.gain.value);
+      return true;
     }
   });
 

@@ -107,7 +107,7 @@ ul{float:right;list-style:none;margin:0 auto;padding:0;overflow:hidden;}
 li{float:left;margin:0 5px 0 0;width:50px;height:50px;text-align:center;line-height:20px;}
 li:last-child{margin:0;}
 li.step{border-top:5px solid #333;}
-li.step.active{border-top:5px solid red;}
+li.step.current{border-top:5px solid red;}
 label{margin:0 0 0 20px;}
 input[type="number"]{width:50px;margin:0 5px;}
 button{width:50px;height:50px;text-align:center;vertical-align:middle}
