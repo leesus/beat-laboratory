@@ -31,9 +31,9 @@ define(['knockout', 'webaudio/context', 'baseviewmodel', 'viewmodels/mixer', 'vi
 
       this.loop = this.loop();
 
-      this.tracks.push(new TrackViewModel( new Track({ instrument: 'Kick', url: '/js/test/files/bass.wav' }) ));
-      this.tracks.push(new TrackViewModel( new Track({ instrument: 'Snare', url: '/js/test/files/snare.wav' }) ));
-      this.tracks.push(new TrackViewModel( new Track({ instrument: 'Hat (closed)', url: '/js/test/files/hat.wav' }) ));
+      this.tracks.push(new TrackViewModel( new Track({ instrument: 'Kick', url: '../../test/files/bass.wav' }) ));
+      this.tracks.push(new TrackViewModel( new Track({ instrument: 'Snare', url: '../../test/files/snare.wav' }) ));
+      this.tracks.push(new TrackViewModel( new Track({ instrument: 'Hat (closed)', url: '../../test/files/hat.wav' }) ));
 
       for (; i < l; i++){
         steps.push(ko.observableArray());
